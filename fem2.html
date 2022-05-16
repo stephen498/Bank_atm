@@ -1,97 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/style.css">
+        <title>Document</title>
+    </head>
 
-<body
-    style='background-image:url(access-bank-plc.svg);background-repeat: no-repeat;background-position: 15cm;background-position-y: 5cm;'>
-    <h1 style="text-align:center;font-style:italic;color: aqua;text-shadow: 2cm;">WELCOME TO ACCESS BANK PLC</h1>
-    <P style="text-align:center;font-style:italic;color: darkcyan;text-shadow: 1cm;"> YOUR COMFORT IS OUR PRIORITY</P>
-    <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
+    <body
+        style='background-image:url(access-bank-plc.svg);background-repeat: no-repeat;background-position: 15cm;background-position-y: 5cm;'>
+        <h1 style="text-align:center;font-style:italic;color: aqua;text-shadow: 2cm;">WELCOME TO ACCESS BANK PLC</h1>
+        <P style="text-align:center;font-style:italic;color: darkcyan;text-shadow: 1cm;"> YOUR COMFORT IS OUR PRIORITY
+        </P>
+        <br /> <br />
 
-    <div class="balance">
-        <p>Total Balance: <span class="total">0</span></p>
-    </div>
+        <div class="balance">
+            <p>Total Balance: <span class="total">0</span></p>
+        </div>
 
-    <div id='Acct'>
-        <input type="radio" name="radio" id="radio" />
-        <button onclick="myAccountDetails(moneyInAcct)">Withdrawal</button>
-    </div>
-    <br />
-    <div id="Acct1">
-        <input type="radio" name="rad" id="rad" />
-        <a href='fem.html'>
-            <button onclick='myAcctDone()'>End Transaction</button>
-        </a>
-    </div>
-    <script>
-        let c = document.getElementById('Acct');
-        const totalSpan = document.querySelector('span.total');
-        let moneyInAcct = 1e5;
-        totalSpan.textContent = moneyInAcct;
-
-        function myAccountDetails(moneyInAcct) {
-
-            //let moneyInAcct = 1e5;
-            let error = 'Insufficient Funds';
-            let bankCredibility;
-            let bank;
-            let deposit;
-            let amountToWithdraw = +prompt('How much do you want to withdraw?',);
-            if (amountToWithdraw <= moneyInAcct || amountToWithdraw == null || amountToWithdraw == '') {
-                alert(`Take your #${amountToWithdraw} naira`);
-
-                moneyInAcct -= amountToWithdraw;
-                alert(`Amount left is #${moneyInAcct}`);
-                if (confirm('Do you want to perform another withdrawal?')) {
-                    return myAccountDetails(moneyInAcct);
-                }
-                alert('You are done');
+        <div id='actions'>
+            <button onclick="myAccountDetails()">Withdrawal</button>
+            <button onclick="putMoneyIntoMyAccount()">Deposit</button>
+            <button onclick='myAcctDone()'>Log Out</button>
+        </div>
 
 
-            } else {
-                alert(error);
-                if (confirm('Do you still want to continue in the withdrawal')) {
-                    return myAccountDetails(moneyInAcct);
-                }
-
-
-            }
-
-            if (confirm('do you wanna deposit',)) {
-                bankCredibility = +prompt('Enter Acct no:',);
-                bank = +prompt('Enter Bank name:',);
-                deposit = +prompt("How much do you wanna deposit?",);
-                moneyInAcct += deposit;
-                alert(`you have successfully deposited and your total balance is ${moneyInAcct}`);
-            }
-
-
-
-
-
-
-
-
-            /*if (amountToWithdraw == null || amountToWithdraw == '') {
-                let com = confirm('Do you still want to continue in the withdrawal');
-                if (com) {
-                    return myAccountDetails(moneyInAcct);
-                }
-                alert('You are done')
-            }*/
-        }
-        let d = document.getElementById('Acct1');
-
-        function myAcctDone() {
-            alert('Thank you for banking with us!');
-        }
-    </script>
-</body>
+        <script src="js/index.js"></script>
+    </body>
 
 </html>
